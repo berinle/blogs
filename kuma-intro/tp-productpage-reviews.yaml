@@ -1,0 +1,41 @@
+apiVersion: kuma.io/v1alpha1
+kind: TrafficPermission
+mesh: default
+metadata:
+  namespace: default
+  name: productpage-reviews
+spec:
+  sources:
+    - match:
+        kuma.io/service: 'productpage_blog_svc_9080'
+  destinations:
+    - match:
+        kuma.io/service: 'reviews_blog_svc_9080'
+---
+apiVersion: kuma.io/v1alpha1
+kind: TrafficPermission
+mesh: default
+metadata:
+  namespace: default
+  name: productpage-details
+spec:
+  sources:
+    - match:
+        kuma.io/service: 'productpage_blog_svc_9080'
+  destinations:
+    - match:
+        kuma.io/service: 'details_blog_svc_9080'
+---
+apiVersion: kuma.io/v1alpha1
+kind: TrafficPermission
+mesh: default
+metadata:
+  namespace: default
+  name: reviews-ratings
+spec:
+  sources:
+    - match:
+        kuma.io/service: 'reviews_blog_svc_9080'
+  destinations:
+    - match:
+        kuma.io/service: 'ratings_blog_svc_9080'
